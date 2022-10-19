@@ -5,12 +5,12 @@ import (
 	"log"
 	"os"
 
-	"github.com/legit-labs/legit-remote-attestation/pkg/legit_remote_attest"
+	"github.com/legit-labs/legit-remote-provenance/pkg/legit_remote_provenance"
 )
 
 var (
 	subjectsBase64 string
-	endpoint       legit_remote_attest.LegitEndpoint
+	endpoint       legit_remote_provenance.LegitEndpoint
 )
 
 func main() {
@@ -28,7 +28,7 @@ func main() {
 		log.Panicf("missing api token")
 	}
 
-	res, err := legit_remote_attest.Attest(subjectsBase64, endpoint)
+	res, err := legit_remote_provenance.Attest(subjectsBase64, endpoint)
 	if err != nil {
 		log.Panicf("failed to attest: %v", err)
 	}
